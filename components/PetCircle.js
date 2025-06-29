@@ -1,15 +1,29 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, Animated } from 'react-native';
 
 export default class PetCircle extends React.Component {
     render() {
-        const { imageUrl, name, petId } = this.props;
+        const { imageUrl, name, petId, size = 120 } = this.props;
+        
+        // Handle both animated values and regular numbers
+        const circleSize = size instanceof Animated.Value ? size : size;
+        const borderRadius = size instanceof Animated.Value ? size.interpolate({
+            inputRange: [120, 200],
+            outputRange: [60, 100],
+        }) : size / 2;
+        
         return (
             <View style={styles.container}>
-
-                <View style={styles.circle}>
+                <Animated.View style={[
+                    styles.circle, 
+                    {
+                        width: circleSize, 
+                        height: circleSize, 
+                        borderRadius: borderRadius
+                    }
+                ]}>
                     <Image source={{ uri: imageUrl }} style={styles.image} />
-                </View>
+                </Animated.View>
                 {name && <Text style={styles.name}>{name}</Text>}
             </View>
             
