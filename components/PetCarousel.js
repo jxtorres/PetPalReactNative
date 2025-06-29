@@ -42,20 +42,19 @@ export default class PetCarousel extends React.Component {
             <View style={styles.wrapper}>
 
 
-                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
                     {
                         pets.map((pet) => (
-                            <TouchableOpacity key={pet.id} onPress={() => this.handleSelect(pet.id)} activeOpacity={0.8} style={{marginHorizontal: 10, justifyContent: 'center', alignItems: 'center', marginTop: -60}}>
+                            <TouchableOpacity key={pet.id} onPress={() => this.handleSelect(pet.id)} activeOpacity={0.8} style={{marginHorizontal: 10, justifyContent: 'center', alignItems: 'center', marginTop: 100}}>
                                 <Animated.View style={{ width: this.animatedSizes[pet.id], height: this.animatedSizes[pet.id] }}>
                                     <PetCircle key={pet.id} imageUrl={pet.imageUrl} name={pet.name} petId={pet.id} size={this.animatedSizes[pet.id]}  />
                                 </Animated.View>
                             </TouchableOpacity>
                         ))
                     }
-                    <NewPetCircle onPress={onAddPet} />
+                    <TouchableOpacity activeOpacity={0.8} style={{marginHorizontal: 10, justifyContent: 'center', alignItems: 'center', marginTop: 150}}>
+                        <NewPetCircle onPress={onAddPet} />
+                    </TouchableOpacity>
                     
-                    
-                </ScrollView>
 
             </View>
             
@@ -68,6 +67,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 500,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
     scrollContainer: {
         flexDirection: 'row',
