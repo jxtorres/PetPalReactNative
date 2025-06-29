@@ -1,16 +1,36 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
+import Svg, { Line } from 'react-native-svg';
 
-export default class PetCircle extends React.Component {
+export default class NewPetCircle extends React.Component {
     render() {
         const { imageUrl, name, petId } = this.props;
         return (
             <View style={styles.container}>
 
                 <View style={styles.circle}>
-                    <Image source={{ uri: imageUrl }} style={styles.image} />
+                    <Svg width="40" height="40" viewBox="0 0 40 40">
+                        <Line
+                        x1="20"
+                        y1="10"
+                        x2="20"
+                        y2="30"
+                        stroke="black"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        />
+                        <Line
+                        x1="10"
+                        y1="20"
+                        x2="30"
+                        y2="20"
+                        stroke="black"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        />
+                    </Svg>
                 </View>
-                {name && <Text style={styles.name}>{name}</Text>}
+                { <Text style={styles.name}>Add Pet</Text>}
             </View>
             
         );
