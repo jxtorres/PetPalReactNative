@@ -7,10 +7,7 @@ export default class PetCircle extends React.Component {
         
         // Handle both animated values and regular numbers
         const circleSize = size instanceof Animated.Value ? size : size;
-        const borderRadius = size instanceof Animated.Value ? size.interpolate({
-            inputRange: [120, 200],
-            outputRange: [60, 100],
-        }) : size / 2;
+        const borderRadius =  size._value / 2;
         
         return (
             <View style={styles.container}>
