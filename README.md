@@ -54,3 +54,15 @@ npm run android
 - ✅ Single codebase for all platforms
 - ✅ Minimal setup with Expo
 - ✅ Ready for extension with native modules 
+
+
+## FAQ
+
+Error: EMFILE: too many open files
+Solution:
+```
+ulimit -n 10000
+rm -rf .expo .expo-shared node_modules
+npm install
+npx expo start --clear
+```
