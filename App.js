@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { Pacifico_400Regular } from '@expo-google-fonts/pacifico';
 import HeaderBar from './components/HeaderBar';
+import GeneralInfoCard from './components/GeneralInfo';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -32,6 +33,7 @@ export default function App() {
     <View style={{ justifyContent: 'center', alignItems: 'center' , backgroundColor: 'mintcream'}}>
        <HeaderBar />
       <PetCarousel pets={pets} onAddPet={handleAddPet} />
+      <GeneralInfoCard />
   </View>
   );
 } 
